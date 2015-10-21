@@ -18,5 +18,17 @@ public class Example {
     if (dispenser.isEmpty()) {
       System.out.println("Ate all of the Pez!");
     }
+    dispenser.load(4);
+    dispenser.load(2);
+    while (dispenser.dispense()) {
+      System.out.println("Chomp!");
+    }
+    try {
+      dispenser.load(400);
+      System.out.println("This should never happen");
+    } catch (IllegalArgumentException iae) {
+      System.out.println("WHOA!");
+      System.out.printf("The error was: %s\n", iae.getMessage());
+    }
   }
 }
